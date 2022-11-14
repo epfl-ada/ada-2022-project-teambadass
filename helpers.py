@@ -2,6 +2,7 @@
 
 import numpy as np
 
+
 def bootstrap_CI(data1, data2, num_draws=10000):
     """
     Computes 95% confidence interval for the mean difference between data1 and data2
@@ -10,7 +11,7 @@ def bootstrap_CI(data1, data2, num_draws=10000):
     ----------
     data1: array_like
         The data you desire to calculate confidence interval for
-    
+
     data2: array_like
         The data you desire to calculate confidence interval for
 
