@@ -1,6 +1,6 @@
 import pandas as pd
 
-def correct_for_inflation(movies, column, start_year, end_year):	
+def correct_for_inflation(movies, column, start_year=2000, end_year=2012):	
 	"""
 	Corrects for inflation in input DataFrame. All values will be corrected with start_year as base case
 	Args:
