@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # The recipe for a movie success 
 ## Abstract
 The global film industry is a [`$`100 billion worth industry](https://en.wikipedia.org/wiki/Film_industry). There is a vast potential to earn money, and the producers are willing to sacrifice considerable costs to become a movie success. `Pirates of the Caribbean: On Stranger Tides,` the most expensive film, cost [`$`379 million](https://en.wikipedia.org/wiki/List_of_most_expensive_films). With such an amount at your disposal, you may wonder what you should spend the money on. Should you use them to get one of the biggest movie stars in your cast? For many, this may be tempting. One of the most famous actors, `Tom Cruise,` was rewarded [`$`100,000,000](https://en.wikipedia.org/wiki/List_of_highest-paid_film_actors) for his performance in `Top Gun: Maverick.` But was it worth it? Or could the money be better spent? The [CMU Movie Summary Corpus](http://www.cs.cmu.edu/~ark/personas/) contains data on the revenue of  8 401 movies. We will analyze this data to create a recipe for a successful movie.
@@ -67,3 +68,25 @@ The global film industry is a [`$`100 billion worth industry](https://en.wikiped
   </tr>
 </tbody>
 </table>
+=======
+# CS-401 - MILESTONE P2 - TeamBadass
+
+### Title
+
+### Abstract
+A 150 word description of the project idea and goals. What’s the motivation behind your project? What story would you like to tell, and why?
+
+### Research Questions
+A list of research questions you would like to address during the project.
+
+### Proposed additional datasets (if any)
+List the additional dataset(s) you want to use (if any), and some ideas on how you expect to get, manage, process, and enrich it/them. Show us that you’ve read the docs and some examples, and that you have a clear idea on what to expect. Discuss data size and format if relevant. It is your responsibility to check that what you propose is feasible.
+
+### Methods
+
+### Proposed timeline
+
+### Organization within the team: A list of internal milestones up until project Milestone P3.
+
+### Questions for TAs (optional): Add here any questions you have for us related to the proposed project.
+>>>>>>> e03d9cc839b7cdf62cfdc7955727958fe2c71483
