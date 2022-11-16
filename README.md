@@ -5,6 +5,10 @@ The global film industry is a [`$`100 billion worth industry](https://en.wikiped
 ## Research Questions (TODO: @anni5701)
 
 ## Additional Datasets (TODO: @torkelwestby)
+- [**Budget**](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?resource=download&select=movies_metadata.csv) - a dataset containing budget of movies. Budget is essential to reduce the risk of confounding variables when analyzing the relationship between our variables of interest and the box office revenue. 
+- [**World Bank CPI**](https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?end=2012&start=1990&view=chart) - a dataset containing country names and inflation data will be used to adjust budgets and box office revenues of the movies. We use the Headline Consumer Price Index (CPI) of the United States to adjust for inflation. CPI is the most widely used measure of inflation, and we use the U.S. as a baseline because both budget and revenue are stated in USD in our datasets. By adjusting for inflation, we can measure financial success in constant dollars, which allows us to compare movies from different years. 
+- [**IMDB Movies**](https://www.imdb.com/interfaces/) - In addition to defining a movie successful in financial terms, we want to make the definition more diverse by measuring success in terms of ratings received as well. In addition to the movie title used for merging, we only use the average vote and vote count in this dataset. 
+
 
 ## Methods (TODO: @kevinxyc1 & @anni5701)
 
