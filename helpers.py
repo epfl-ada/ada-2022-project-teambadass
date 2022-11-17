@@ -39,9 +39,8 @@ def bootstrap_CI(data1, data2, num_draws=10000):
 
 
 
-def correct_for_inflation(movies,
+def correct_for_inflation(movies,inflation_data_path,
 						  capital_col,release_col='movie_release_date',
-						  inflation_data_path='./data/inflation.csv',
 						  start_year=2000, end_year=2012):
 	"""
 	Corrects for inflation in input DataFrame. All values will be corrected
@@ -92,3 +91,21 @@ def correct_for_inflation(movies,
 				   & (movies_copy[release_col] < years[i+1]), capital_col] /= inflation.iloc[0][years[i]]
 		
 	return movies_copy
+
+def get_path(url):
+    '''
+    Returns data path for input url. 
+    Returned path can be used to make dataframe.
+    
+    Parameters
+    ----------
+    url: string
+        The url you desire to find path for
+
+    Returns
+    -------
+    path: string
+        The path which can be used to make dataframe in pandas
+        
+    '''
+    return 'https://drive.google.com/uc?id=' + url.split('/')[-2]
