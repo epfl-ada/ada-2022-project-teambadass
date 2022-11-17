@@ -5,12 +5,48 @@ The global film industry is a [`$`100 billion worth industry](https://en.wikiped
 ## Research Questions (TODO: @anni5701)
 
 ## Additional Datasets (TODO: @torkelwestby)
-- [**Budget**](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?resource=download&select=movies_metadata.csv) - a dataset containing budget of movies. Budget is essential to reduce the risk of confounding variables when analyzing the relationship between our variables of interest and the box office revenue. 
+- [**Budget**](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?resource=download&select=movies_metadata.csv) - a dataset containing budget of movies. Buwdget is essential to reduce the risk of confounding variables when analyzing the relationship between our variables of interest and the box office revenue. 
 - [**World Bank CPI**](https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?end=2012&start=1990&view=chart) - a dataset containing country names and inflation data will be used to adjust budgets and box office revenues of the movies. We use the Headline Consumer Price Index (CPI) of the United States to adjust for inflation. CPI is the most widely used measure of inflation, and we use the U.S. as a baseline because both budget and revenue are stated in USD in our datasets. By adjusting for inflation, we can measure financial success in constant dollars, which allows us to compare movies from different years. 
 - [**IMDB Movies**](https://www.imdb.com/interfaces/) - In addition to defining a movie successful in financial terms, we want to make the definition more diverse by measuring success in terms of ratings received as well. In addition to the movie title used for merging, we only use the average vote and vote count in this dataset. 
 
 
 ## Methods (TODO: @kevinxyc1 & @anni5701)
+
+### Data Preprocessing
+- We are looking for a recipe to maximize the movie box office revenue. We have therefore removed all movies without revenue.
+- We normalize the revenue by taking account into inflation between 1960 to 2014 so that movies are more comparable.
+
+### Spearman Correlation
+We used the Spearman correlation to test for a correlation between various attributes and revenue. The Spearman correlation assesses monotonic relationships. Here is a list of correlations within each attribute:
+- Diversity
+  - Number of ethnicities vs revenue
+  - Ethnicity score vs revenue where $ethnicity\ score = \frac{number\ of\ ethnicities}{number\ of\ actors}$
+  - Number of female actors vs revenue
+  - Fraction of female actors vs revenue
+- Runtime
+  - Runtime vs revenue
+- Plot Summary
+  - Positive word proportion vs revenue
+  - Negative word proportion vs revenue
+  - Violent word proportion vs revenue
+
+### Independent t-test
+When investigating each attribute, we divide the dataset into two groups to determine whether there is a statistically significant difference between the means in two unrelated groups. We then simulated the t-test 10 000 times to calculate the statistical power and we use bootstrap with 10 000 draws to compute the 95% CI. Here is a list of t-tests we perform within each attribute:
+- Diversity
+  - movies with the majority of male actors & movies with the majority of female actors
+  - movies with higher ethnicity score (> 0.5) & movies with lower ethnicity score (<= 0.5) 
+- Runtime
+  - movies with runtime <=80min & movies with runtime >80min
+  - runtime of blockbuster (revenue >= $400 million) & runtime of non-blockbuster movies
+- Plot Summary
+  - movies with more positive plot & movies with more negative plot
+  - proportion of positive words in blockbuster plots & proportion of positive words in non-blockbuster plots
+  - proportion of negative words in blockbuster plots & proportion of negative words in non-blockbuster plots
+  - proportion of violent words in blockbuster plots & proportion of violent words in non-blockbuster plots
+  
+  
+ 
+  
 
 ## Proposed timeline
 ```
