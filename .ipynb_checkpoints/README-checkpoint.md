@@ -77,7 +77,13 @@ The global film industry is a [`$`100 billion worth industry](https://en.wikiped
 A 150 word description of the project idea and goals. What’s the motivation behind your project? What story would you like to tell, and why?
 
 ### Research Questions
-A list of research questions you would like to address during the project.
+In our analysis, we define the success of a film in terms of box office revenue. To create a recipe for the production of a successful film, we have limited ourselves to 5 main categories, which we will examine in more detail for their influence on the success of a film.
+
+1. Do certain actors have an significant positive or negative impact on the movies success?
+2. Do the day, month and year of a film's release date have a significant impact on the success of a film and if so, what is the optimal release date with respect to day and month?
+3. Is the length of a film related to its success and if so in what way?
+4. Does the use of negatively connoted words, positively connoted words and words related to violence in the title of a film have an effect on the success of the film?
+5. Regarding the analysis of the actors, do the gender ratio of the actors and the number of ethnicities of the actors have an impact on the success of the film?
 
 ### Proposed additional datasets (if any)
 List the additional dataset(s) you want to use (if any), and some ideas on how you expect to get, manage, process, and enrich it/them. Show us that you’ve read the docs and some examples, and that you have a clear idea on what to expect. Discuss data size and format if relevant. It is your responsibility to check that what you propose is feasible.
