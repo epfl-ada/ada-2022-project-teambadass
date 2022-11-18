@@ -5,7 +5,7 @@ The global film industry is a [`$`100 billion worth industry](https://en.wikiped
 ## Research Questions 🔎
 In our initial analysis, we define the success of a movie in terms of box office revenue. To create a recipe for the production of a successful film, we have limited ourselves to five main research questions:
 
-1. Does the movie `release date` have a significant impact on the success of a film and if so, what is the optimal `release date` with respect to the time of the year? Subsequently, the question arises whether this result differs for different `genres`.
+1. Does the movie `release date` have a significant impact on the success of a film and if so, what is the optimal `release date` with respect to the time of the year? Subsequently, the question arises whether this result differs for different `genres.`
 2. How do the `gender` ratio and the number of `ethnicities` in the cast affect the success of a movie?
 3. Do certain `actors` have a significant positive or negative impact on the success of a movie?
 4. Is the `length` of a movie related to its success and if so in what way?
