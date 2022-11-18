@@ -12,9 +12,16 @@ The global film industry is a [`$`100 billion worth industry](https://en.wikiped
 
 ## Methods (TODO: @kevinxyc1 & @anni5701)
 
+We utilized various methods in analyzing five main attributes of a movie (Diversity, Cast, Release Date, Runtime, Plot Summary) and how they may affect the revenue. Here are the methods and steps during our analysis.
+
 ### Data Preprocessing
-- We are looking for a recipe to maximize the movie box office revenue. We have therefore removed all movies without revenue.
-- We normalize the revenue by taking account into inflation between 1960 to 2014 so that movies are more comparable.
+- Movie Metadata
+  - We are looking for a recipe to maximize the movie box office revenue. We have therefore removed all movies without movie_box_office_revenue.
+  - We normalize the revenue by taking account into inflation between 1960 to 2014 so that movies are more comparable.
+- Character Metadata
+  - We removed characters without freebase_actor_ID to address for null id.
+  - We merged actors with movies to be able to explore how actors affect movie revenue.
+  - We implemented one hot encoded actors such that each actor corresponds to a column, and each row for that column is 1 if the actor played the movie. We also tried different thresholds for how many movies they had played for them to be included in the dataframe.
 
 ### Spearman Correlation
 We used the Spearman correlation to test for a correlation between various attributes and revenue. The Spearman correlation assesses monotonic relationships. Here is a list of correlations within each attribute:
@@ -29,6 +36,9 @@ We used the Spearman correlation to test for a correlation between various attri
   - Positive word proportion vs revenue
   - Negative word proportion vs revenue
   - Violent word proportion vs revenue
+
+### Linear Regression
+We performed linear regression to see the correlation between various attributes and revenue especially in the `cast` section. The higher the R-squared value, the better the dependent variable (revenue) is explained by an independent variable in a regression model. We included actors as (categorical) predictors and other relevant variables (budget, genre, release_date and more) which could act as confounders (addressed later) and we extracted the actors that resulted in the highest coefficients, but only for those that had p-value < 0.05. 
 
 ### Independent t-test
 When investigating each attribute, we divide the dataset into two groups to determine whether there is a statistically significant difference between the means in two unrelated groups. We then simulated the t-test 10 000 times to calculate the statistical power and we use bootstrap with 10 000 draws to compute the 95% CI. Here is a list of t-tests we perform within each attribute:
