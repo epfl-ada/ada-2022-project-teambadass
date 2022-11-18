@@ -29,6 +29,8 @@ We use t-tests to determine if there is a significant difference between the mea
 ### Linear Regression
 We performed linear regression with ordinary least squares (OLS) to see the correlation between various attributes and `revenue`. In our initial analysis, we were particularly interested in R-squared to see how our models explain the revenue made.
 
+
+
 We describe our choice of methods using our research questions as a baseline. Further details on the steps we describe can be found in [**project_milestone_2.ipynb**](https://github.com/epfl-ada/ada-2022-project-teambadass) with the same structure as the following:
 
 ### Step 1: General Pre-Processing
@@ -56,7 +58,7 @@ We used runtime and box office revenue to split the DataFrames into pairwise gro
 We calculate the proportion of words with `positive` / `negative` / `violent` connotations out of all words in the movie summary. We used t-tests and linear regression to measure the effect of certain terms used to describe the movie.
 
 ### Methods for the future
-We will use pair matching of movies to control the effects of confounding variables, which will make it possible to estimate causation effects. We also want to perform trend analysis to see which movies tend to receive higher revenue. To do so, we want to use difference in difference. 
+We will use pair matching of movies to control the effects of confounding variables, which will make it possible to estimate causation effects. We also want to perform trend analysis to see which movies tend to receive higher revenue. To do so, we will use difference in difference. 
  
 
 
