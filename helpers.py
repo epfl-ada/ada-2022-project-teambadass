@@ -39,6 +39,7 @@ def bootstrap_CI(data1, data2, num_draws=10000):
 
     return [np.nanpercentile(means, 2.5), np.nanpercentile(means, 97.5)]
 
+
 def check_summary(summary, list_):
     """
     Count what proportion of words from a list the summary contains
@@ -145,6 +146,7 @@ def get_path(url):
 
     """
     return "https://drive.google.com/uc?id=" + url.split("/")[-2]
+
 
 def is_given_date(x, format_="%Y-%m-%d"):
     """
