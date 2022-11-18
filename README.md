@@ -56,7 +56,7 @@ We used runtime and box office revenue to split the DataFrames into pairwise gro
 We calculate the proportion of words with `positive` / `negative` / `violent` connotations out of all words in the movie summary. We used t-tests and linear regression to measure the effect of certain terms used to describe the movie.
 
 ### Methods for the future
-We will use pair matching of movies to control the effects of confounding variables. We also want to perform trend analysis to see which movies tend to receive higher revenue. To do so, we want to use difference in difference. 
+We will use pair matching of movies to control the effects of confounding variables, which will make it possible to estimate causation effects. We also want to perform trend analysis to see which movies tend to receive higher revenue. To do so, we want to use difference in difference. 
  
 
 
