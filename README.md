@@ -23,14 +23,14 @@ In further analysis, we will extend the definition of a movie's success to inclu
 
 ## Methods
 
-Spearman Correlation 
+### Spearman Correlation 
 We used the Spearman correlation to test for a monotonic relation between various attributes and revenue. 
 
-T-tests
-We use t-tests to determine if there is a significant difference between the means of the two groups and how they are related. We simulate the t-tests 10 000 times to calculate the statistical power, and we used bootstrap with 10 000 draws to compute the 95% CI. The groups we have used for the t-tests will be clarified in the steps we describe. 
+### T-tests
+We use t-tests to determine if there is a significant difference between the means of different groups and how they are related. We simulate the t-tests 10 000 times to calculate the statistical power, and we use bootstrap with 10 000 draws to compute the 95% CI. We have been able to use t-tests without normality because of the central limit theorem. 
 
-Linear Regression
-We performed linear regression with ordinary least squares (OLS) to see the correlation between various attributes and revenue. In our initial analysis, we were particularly interested in R-squared to see how our models explain the revenue made. 
+### Linear Regression
+We performed linear regression with ordinary least squares (OLS) to see the correlation between various attributes and revenue. In our initial analysis, we were particularly interested in R-squared to see how our models explain the revenue made.
 
 We describe our choice of methods using our research questions as a baseline. Further details on the steps we describe can be found in [**project_milestone_2.ipynb**](link) with the same structure as the following:
 
@@ -43,25 +43,23 @@ We removed characters without freebase_actor_ID.
 We merged actors with movies on wikipedia_movie_ID to be able to explore how actors affect movie revenue
 
 ### Step 2: Release Date
-
-
+We performed ANOVA testing to find out if there are difference in revenue mean for the movies released in different months. We then proceeded with performing 12 t-tests with one months as one group and the rest as the other group. 
 
 ### Step 3: Diversity
-We used $ethnicity\ score = \frac{number\ of\ ethnicities}{number\ of\ actors}$ and $female\ score = \frac{number\ of\ females}{number\ of\ actors}$ to measure the effect of diversity on revenue made.
+We used $ethnicity\ score = \frac{number\ of\ ethnicities}{number\ of\ actors}$ and $female\ score = \frac{number\ of\ females}{number\ of\ actors}$ to measure the effect of diversity on revenue made. We used a threshold with $ethnicity\ score = 0.5$ and $female\ score = 0.5$ to create splits of the dataframe and then performed t-tests on the pairwise groups. 
 
 ### Step 4: Cast
 We used One-Hot Encoding of the actors by creating a dummy variable for each actor. We created a new variable for each actor, so we had to experiment with different thresholds to avoid excessively large DataFrames. The threshold corresponds to how many movies the actor has played. 
 The DataFrame was then used in a linear regression model using the actors as categorical predictors. 
-Later in the project, we want to include more predictors to reduce the chances of confounders. 
 
 ### Step 5: Runtime
-We used runtime and box office revenue to split the DataFrames into pairwise groups. We performed t-tests to determine the difference in means between each pair. 
+We used runtime and box office revenue to split the DataFrames into pairwise groups which we performed t-tests on. 
 
 ### Step 6: Plot Summary
-We calculate the proportion of words with positive / negative / violent connotations out of all words in the movie summary. We use both t-tests and linear regression to measure the effect of certain words used to describe the movie. 
+We calculate the proportion of words with positive / negative / violent connotations out of all words in the movie summary. We use both t-tests and linear regression to measure the effect of certain words used to describe the movie.
 
 ### Methods for the future
-We want to continue exploring the methods we have used in our initial analysis. However, our current analysis might fail to account for confounding variables which could have caused them to wrongly estimate the relationship we have seen so far. We will use pair matching of movies to control for effects of confounding variables. We also want to perform trend analysis to see 
+We want to continue exploring the methods we have used in our initial analysis. However, our current analysis might fail to account for confounding variables which could have caused them to wrongly estimate the relationship we have seen so far. We will use pair matching of movies to control for effects of confounding variables. We also want to perform trend analysis to see which trends there are in the movie industry. 
 
 
 ## Proposed timeline
