@@ -3,6 +3,15 @@
 The global film industry is a [`$`100 billion worth industry](https://en.wikipedia.org/wiki/Film_industry). There is a vast potential to earn money, and the producers are willing to sacrifice considerable costs to become a movie success. `Pirates of the Caribbean: On Stranger Tides,` the most expensive film, cost [`$`379 million](https://en.wikipedia.org/wiki/List_of_most_expensive_films). With such an amount at your disposal, you may wonder what you should spend the money on. Should you use them to get one of the biggest movie stars in your cast? For many, this may be tempting. One of the most famous actors, `Tom Cruise,` was rewarded [`$`100,000,000](https://en.wikipedia.org/wiki/List_of_highest-paid_film_actors) for his performance in `Top Gun: Maverick.` But was it worth it? Or could the money be better spent? The [CMU Movie Summary Corpus](http://www.cs.cmu.edu/~ark/personas/) contains data on the revenue of  8 401 movies. We will analyze this data to create a recipe for a successful movie.
 
 ## Research Questions (TODO: @anni5701)
+In our intial analysis, we define the success of a film in terms of box office revenue. To create a recipe for the production of a successful film, we have limited ourselves to 5 main categories, which we will examine in more detail for their influence on the success of a film.
+
+1. Do certain actors have an significant positive or negative impact on the movies success?
+2. Do the day, month and year of a film's release date have a significant impact on the success of a film and if so, what is the optimal release date with respect to day and month? Subsequently, the question arises whether this result differs for different genres.
+3. Is the length of a movie related to its success and if so in what way?
+4. Is the use of negatively connoted words, positively connoted words and words related to violence in the plot of a movie related to the success of the movie?
+5. Regarding the analysis of the actors, do the gender ratio of the actors and the number of ethnicities of the actors have an impact on the success of the movie?
+
+In further analysis, we will extend the definition of a movie's success to include ratings. Subsequently, we will evaluate how our results change when we choose ratings as an indicator of success.
 
 ## Additional Datasets (TODO: @torkelwestby)
 - [**Budget**](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?resource=download&select=movies_metadata.csv) - a dataset containing budget of movies. Buwdget is essential to reduce the risk of confounding variables when analyzing the relationship between our variables of interest and the box office revenue. 
