@@ -23,9 +23,6 @@ In further analysis, we will extend the definition of a movie's success to inclu
 
 ## Methods 🔤
 
-### Spearman Correlation 
-We used the Spearman correlation to test for a monotonic relation between various attributes and revenue. 
-
 ### T-tests
 We use t-tests to determine if there is a significant difference between the means (`revenue`) of different groups. We simulate the t-tests 10 000 times to calculate the statistical power, and we use bootstrap with 10 000 draws to compute the 95% CI. We have been able to use t-tests without normality because of the central limit theorem. 
 
@@ -59,7 +56,7 @@ We used runtime and box office revenue to split the DataFrames into pairwise gro
 We calculate the proportion of words with `positive` / `negative` / `violent` connotations out of all words in the movie summary. We used t-tests and linear regression to measure the effect of certain terms used to describe the movie.
 
 ### Methods for the future
-We will use pair matching of movies to control the effects of confounding variables. We also want to perform trend analysis to see which movies tend to receive higher revenue.
+We will use pair matching of movies to control the effects of confounding variables. We also want to perform trend analysis to see which movies tend to receive higher revenue. To do so, we want to use difference in difference 
  
 
 
