@@ -1,8 +1,8 @@
-# The recipe for a movie success 
+# The recipe for a movie success 🎬
 ## Abstract
 The global film industry is a [`$`100 billion worth industry](https://en.wikipedia.org/wiki/Film_industry). There is a vast potential to earn money, and the producers are willing to sacrifice considerable costs to become a movie success. `Pirates of the Caribbean: On Stranger Tides,` the most expensive film, cost [`$`379 million](https://en.wikipedia.org/wiki/List_of_most_expensive_films). With such an amount at your disposal, you may wonder what you should spend the money on. Should you use them to get one of the biggest movie stars in your cast? For many, this may be tempting. One of the most famous actors, `Tom Cruise,` was rewarded [`$`100,000,000](https://en.wikipedia.org/wiki/List_of_highest-paid_film_actors) for his performance in `Top Gun: Maverick.` But was it worth it? Or could the money be better spent? The [CMU Movie Summary Corpus](http://www.cs.cmu.edu/~ark/personas/) contains data on the revenue of  8 401 movies. We will analyze this data to create a recipe for a successful movie.
 
-## Research Questions
+## Research Questions 🔎
 In our initial analysis, we define the success of a movie in terms of box office revenue. To create a recipe for the production of a successful film, we have limited ourselves to 5 main research questions:
 
 1. Does the movie release date have a significant impact on the success of a film and if so, what is the optimal release date with respect to the time of the year? Subsequently, the question arises whether this result differs for different genres.
@@ -14,55 +14,56 @@ In our initial analysis, we define the success of a movie in terms of box office
 In further analysis, we will extend the definition of a movie's success to include ratings. Subsequently, we will evaluate how our results change when we choose ratings as an indicator of success.
 
 
-## Additional Datasets
-- [**Budget**](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?resource=download&select=movies_metadata.csv) - a dataset containing budget of movies. Budget is essential to reduce the risk of confounding variables when analyzing the relationship between our variables of interest and the box office revenue. We will merge this dataset with [**movie.metadata.csv**](https://drive.google.com/file/d/18ZLIKZsH41qls54Gy1qSYW1xtovf9Ke9/view?usp=share_link) by combining movie name, release year and runtime to create a unique key for each movie. 
-- [**World Bank CPI**](https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?end=2012&start=1990&view=chart) - a dataset containing country names and inflation data will be used to adjust budgets and box office revenues of the movies. We use the Headline Consumer Price Index (CPI) of the United States to adjust for inflation. CPI is the most widely used measure of inflation, and we use the U.S. as a baseline because both budget and box office revenue are stated in USD. By adjusting for inflation, we can measure financial success in constant dollars, which allows us to compare movies from different years.
-- [**IMDB Movies**](https://www.imdb.com/interfaces/) - In addition to defining a movie successful in financial terms, we want to make the definition more diverse by measuring success in terms of ratings received as well. We have extracted two datasets from IMDb - one for making the merge with our movie data possible (movie name, release year and runtime), and one for extracting the average ratings and number of votes received.
-- [**Vocabularies**](https://drive.google.com/drive/folders/1-KcpE8cju60CcNXWc_gPZ6x3V8r7T5eH?usp=share_link) ([**Positive**](https://ptrckprry.com/course/ssd/data/positive-words.txt), [**Negative**](https://ptrckprry.com/course/ssd/data/negative-words.txt), and [**Violence**](https://myvocabulary.com/word-list/violence-vocabulary/)) - We analyze the plot summaries in [**movie.metadata.csv**](https://drive.google.com/file/d/18ZLIKZsH41qls54Gy1qSYW1xtovf9Ke9/view?usp=share_link) from three sentiments: positive, negative and violent words and analyze if their proportion in the plot summaries affects revenue. 
+## Additional Datasets 📈
+- [**Budget**](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?resource=download&select=movies_metadata.csv) - a dataset containing budget of movies. Budget is essential to reduce the risk of confounding variables when analyzing the relationship between our variables of interest and the `box office revenue`. We will merge this dataset with [**movie.metadata.csv**](https://drive.google.com/file/d/18ZLIKZsH41qls54Gy1qSYW1xtovf9Ke9/view?usp=share_link) by combining `movie name`, `release year` and `runtime` to create a unique key for each movie.  
+- [**World Bank CPI**](https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?end=2012&start=1990&view=chart) - a dataset containing country names and inflation data will be used to adjust `budget` and `box office revenue` of the movies. We use the Headline Consumer Price Index (CPI) of the United States to adjust for inflation. CPI is the most widely used measure of inflation, and we use the U.S. as a baseline because both budget and box office revenue are stated in USD. By adjusting for inflation, we can measure financial success in constant dollars, which allows us to compare movies from different years.
+- [**IMDB Movies**](https://www.imdb.com/interfaces/) - In addition to defining a movie successful in financial terms, we want to make the definition more diverse by measuring success in terms of ratings received as well. We have extracted two datasets from IMDb - one for making the merge with our movie data possible (`movie name`, `release year` and `runtime`), and one for extracting the `average rating` and `number of votes` received.
+- [**Vocabularies**](https://drive.google.com/drive/folders/1-KcpE8cju60CcNXWc_gPZ6x3V8r7T5eH?usp=share_link) ([**Positive**](https://ptrckprry.com/course/ssd/data/positive-words.txt), [**Negative**](https://ptrckprry.com/course/ssd/data/negative-words.txt), and [**Violence**](https://myvocabulary.com/word-list/violence-vocabulary/)) - We analyze the plot summaries in [**movie.metadata.csv**](https://drive.google.com/file/d/18ZLIKZsH41qls54Gy1qSYW1xtovf9Ke9/view?usp=share_link) from three sentiments: `positive`, `negative` and `violent` words and analyze if their proportion in the plot summaries affects `revenue`. 
 
 
-## Methods
+## Methods 🔤
 
 ### Spearman Correlation 
 We used the Spearman correlation to test for a monotonic relation between various attributes and revenue. 
 
 ### T-tests
-We use t-tests to determine if there is a significant difference between the means of different groups and how they are related. We simulate the t-tests 10 000 times to calculate the statistical power, and we use bootstrap with 10 000 draws to compute the 95% CI. We have been able to use t-tests without normality because of the central limit theorem. 
+We use t-tests to determine if there is a significant difference between the means (`revenue`) of different groups. We simulate the t-tests 10 000 times to calculate the statistical power, and we use bootstrap with 10 000 draws to compute the 95% CI. We have been able to use t-tests without normality because of the central limit theorem. 
 
 ### Linear Regression
-We performed linear regression with ordinary least squares (OLS) to see the correlation between various attributes and revenue. In our initial analysis, we were particularly interested in R-squared to see how our models explain the revenue made.
+We performed linear regression with ordinary least squares (OLS) to see the correlation between various attributes and `revenue`. In our initial analysis, we were particularly interested in R-squared to see how our models explain the revenue made.
 
-We describe our choice of methods using our research questions as a baseline. Further details on the steps we describe can be found in [**project_milestone_2.ipynb**](link) with the same structure as the following:
+We describe our choice of methods using our research questions as a baseline. Further details on the steps we describe can be found in [**project_milestone_2.ipynb**](https://github.com/epfl-ada/ada-2022-project-teambadass) with the same structure as the following:
 
 ### Step 1: General Pre-Processing
-Movie Metadata
-We are looking for a recipe to maximize the movie box office revenue. We have therefore removed all movies without movie_box_office_revenue.
-We adjust the budget and box_office_revenue for inflation as described in [**Additional datasets**](https://github.com/epfl-ada/ada-2022-project-teambadass/blob/main/README.md). For the current stage of the project, we decided to analyze movies going back to 1960, which is the first year we have data for inflation. 
-Character Metadata
-We removed characters without freebase_actor_ID.
-We merged actors with movies on wikipedia_movie_ID to be able to explore how actors affect movie revenue
+- [**Movie Metadata**](https://drive.google.com/file/d/18ZLIKZsH41qls54Gy1qSYW1xtovf9Ke9/view?usp=share_link)
+  - We are looking for a recipe to maximize the movie box office revenue. We have therefore removed all movies without `movie_box_office_revenue`.
+  -  We adjust the `budget` and `box_office_revenue` for inflation as described in [**Additional datasets**](https://github.com/epfl-ada/ada-2022-project-teambadass/blob/main/README.md). For the project's current stage, we decided to analyze movies going back to 1960, which is the first year we have data for inflation. 
+- [**Character Metadata**](https://drive.google.com/file/d/1b3_Jn3bBJl6prrtPagU-Yol-ijFMod2u/view?usp=share_link)
+  - We removed characters without `freebase_actor_ID`.
+  - We merged [**character.metadata.tsv**](https://drive.google.com/file/d/1b3_Jn3bBJl6prrtPagU-Yol-ijFMod2u/view?usp=share_link) with [**movie.metadata.tsv**](https://drive.google.com/file/d/18ZLIKZsH41qls54Gy1qSYW1xtovf9Ke9/view?usp=share_link) on `wikipedia_movie_ID` to be able to explore how actors affect movie revenue.
 
 ### Step 2: Release Date
-We performed ANOVA testing to find out if there are difference in revenue mean for the movies released in different months. We then proceeded with performing 12 t-tests with one months as one group and the rest as the other group. 
+We performed ANOVA testing to determine if there are differences in revenue mean for the movies released in different months. We then conducted 12 t-tests, with one month as one group and the rest as the other group. 
 
 ### Step 3: Diversity
 We used $ethnicity\ score = \frac{number\ of\ ethnicities}{number\ of\ actors}$ and $female\ score = \frac{number\ of\ females}{number\ of\ actors}$ to measure the effect of diversity on revenue made. We used a threshold with $ethnicity\ score = 0.5$ and $female\ score = 0.5$ to create splits of the dataframe and then performed t-tests on the pairwise groups. 
 
 ### Step 4: Cast
-We used One-Hot Encoding of the actors by creating a dummy variable for each actor. We created a new variable for each actor, so we had to experiment with different thresholds to avoid excessively large DataFrames. The threshold corresponds to how many movies the actor has played. 
+We used One-Hot Encoding of the actors by creating a dummy variable for each actor. We created a new variable for each actor, so we had to experiment with different thresholds to avoid excessively large DataFrames. The threshold corresponds to how many movies the actor has played.
 The DataFrame was then used in a linear regression model using the actors as categorical predictors. 
 
 ### Step 5: Runtime
-We used runtime and box office revenue to split the DataFrames into pairwise groups which we performed t-tests on. 
+We used runtime and box office revenue to split the DataFrames into pairwise groups on which we performed t-tests. 
 
 ### Step 6: Plot Summary
-We calculate the proportion of words with positive / negative / violent connotations out of all words in the movie summary. We use both t-tests and linear regression to measure the effect of certain words used to describe the movie.
+We calculate the proportion of words with `positive` / `negative` / `violent` connotations out of all words in the movie summary. We used t-tests and linear regression to measure the effect of certain terms used to describe the movie.
 
 ### Methods for the future
-We want to continue exploring the methods we have used in our initial analysis. However, our current analysis might fail to account for confounding variables which could have caused them to wrongly estimate the relationship we have seen so far. We will use pair matching of movies to control for effects of confounding variables. We also want to perform trend analysis to see which trends there are in the movie industry. 
+We want to continue exploring the methods we have used in our initial analysis. Our current study might fail to account for confounding variables that could have wrongly caused us to estimate the relationships. We will use pair matching of movies to control the effects of confounding variables. We also want to perform trend analysis to see which movies tend to receive higher revenue. 
+ 
 
 
-## Proposed timeline
+## Proposed timeline ⏳
 ```
 .
 ├── 21.11.22 - Perform paired matching
@@ -90,7 +91,7 @@ We want to continue exploring the methods we have used in our initial analysis. 
 
 ```
 
-## Organization within the team 
+## Organization within the team 👨‍👩‍👧‍👧
 <table class="tg" style="undefined;table-layout: fixed; width: 342px">
 <colgroup>
 <col style="width: 164px">
