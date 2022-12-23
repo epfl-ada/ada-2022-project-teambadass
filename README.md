@@ -91,7 +91,7 @@ We calculate the proportion of words with `positive` / `negative` / `violent` co
 
 ```
 
-## Contribution of the team members 👨‍👩‍👧‍👧
+## Contributions of the team members 👨‍👩‍👧‍👧
 <table class="tg" style="undefined;table-layout: fixed; width: 342px">
 <colgroup>
 <col style="width: 164px">
