@@ -51,7 +51,7 @@ We describe our choice of methods using our research questions as a baseline. Fu
 We performed ANOVA testing to determine if there are differences in revenue mean for the movies released in different months. We then conducted 12 t-tests, with one month as one group and the rest as the other group. We repeated this analysis for the 10 most common genres.
 
 ### Step 3: Diversity
-We used $ethnicity\ score = \frac{number\ of\ ethnicities}{number\ of\ actors}$ and $female\ score = \frac{number\ of\ females}{number\ of\ actors}$ to measure the effect of diversity on revenue made. We used a threshold with $ethnicity\ score = 0.5$ and $female\ score = 0.5$ to create splits of the dataframe and then performed t-tests on the pairwise groups. For more insight we extended our analysis by a range of thresholds and calculated the confidence intervals. Additionally, we performed paired matching to check if we can conclude causality in the previously analysed relationships.
+We used $ethnicity\ score = \frac{number\ of\ ethnicities}{number\ of\ actors}$ and $female\ score = \frac{number\ of\ females}{number\ of\ actors}$ to measure the effect of diversity on revenue made. We used a threshold with $ethnicity\ score = 0.5$ and $female\ score = 0.5$ to create splits of the dataframe and then performed t-tests on the pairwise groups. For more insight we extended our analysis by a range of thresholds and calculated the confidence intervals. Additionally, we performed paired matching to control the effects of confounding variables and estimate causation effects.
 
 ### Step 4: Cast
 We used One-Hot Encoding of the actors by creating a dummy variable for each actor. We created a new variable for each actor, so we had to experiment with different thresholds to avoid excessively large DataFrames. The threshold corresponds to how many movies the actor has played.
@@ -62,9 +62,6 @@ We used runtime and box office revenue to split the DataFrames into pairwise gro
 
 ### Step 6: Plot Summary
 We calculate the proportion of words with `positive` / `negative` / `violent` connotations out of all words in the movie summary. We used t-tests and linear regression to measure the effect of certain terms used to describe the movie.
-
-### Methods for the future
-We will use pair matching of movies to control the effects of confounding variables, making it possible to estimate causation effects. We want to perform a trend analysis to see which movies tend to receive higher revenue. To do so, we will use difference in difference. 
 
 
 ## Proposed timeline ⏳
