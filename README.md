@@ -55,7 +55,7 @@ We used $ethnicity\ score = \frac{number\ of\ ethnicities}{number\ of\ actors}$ 
 
 ### Step 4: Cast
 We used One-Hot Encoding of the actors by creating a dummy variable for each actor. We created a new variable for each actor, so we had to experiment with different thresholds to avoid excessively large DataFrames. The threshold corresponds to how many movies the actor has played.
-The DataFrame was then used in a linear regression model using the actors as categorical predictors. For more insights in potential patterns we used a network analysis.
+The DataFrame was then used in a linear regression model using the actors as categorical predictors. For more insights in potential patterns we used a network analysis, in which we modeled the actors as nodes and edges as indicators for movies two actors starred in together. We used the Louvain method to extract communities of actors and then analysed if movies, which have a majority of actors from one community or contain more than half of one community, have a higher revenue by using regression.
 
 ### Step 5: Runtime
 We used runtime and box office revenue to split the DataFrames into pairwise groups on which we performed t-tests. 
