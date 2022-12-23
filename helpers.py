@@ -6,6 +6,9 @@ import pandas as pd
 from scipy import stats
 from datetime import datetime as dt
 
+from PIL import Image, ImageDraw
+from matplotlib.offsetbox import AnnotationBbox, OffsetImage
+
 
 # data analysis
 def bootstrap_CI(data, num_draws=10000, metric=np.nanmean):
@@ -291,3 +294,34 @@ def shared_value(dict1, dict2):
     for genre in dict2.values():
         if genre in list1:
             return True
+
+
+def get_ab_from_actor(node, node_sizes, pos):
+    # read the image file for this node
+    img = Image.open('./img/' + node.split('/m/')[0] + node.split('_ID_')[1].replace('/', ':') + '.jpg')
+
+    h,w = img.size
+    # Resize the image to a square shape
+    side_length = min(h, w)
+    # crop the image to a square
+    img = img.crop(((h-side_length)//2, (w-side_length)//2, (h+side_length)//2, (w+side_length)//2))
+    img = img.resize((800,800))
+    h,w = img.size
+    
+    # creating luminous image
+    lum_img = Image.new('L',[h,w] ,0) 
+    draw = ImageDraw.Draw(lum_img)
+    draw.pieslice([(0,0),(h,w)],0,360,fill=255)
+    img_arr = np.array(img)
+    lum_img_arr = np.array(lum_img)
+    final_img_arr = np.dstack((img_arr, lum_img_arr))
+
+    image = Image.fromarray(final_img_arr)
+    
+    # create an OffsetImage object for the image
+    image_offset = OffsetImage(image, zoom=node_sizes[node]/2000000000) #, cmap=plt.cm.gray_r)
+    
+    # create an AnnotationBbox object for the image
+    ab = AnnotationBbox(image_offset, pos[node], frameon=False)
+    
+    return ab
