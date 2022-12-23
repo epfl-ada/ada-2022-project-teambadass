@@ -11,6 +11,7 @@ In our analysis, we define the success of a movie in terms of box office revenue
 4. Is the `length` of a movie related to its success, and if so, in what way?
 5. Is the use of `negatively` connoted words, `positively` connoted words, and words related to `violence` in the movie plot associated with the success of the movie?
 
+A more detailed description as well as our results can be found in our [data story](https://kevinxyc1.github.io/ada-project-teambadass/).
 
 ## Additional Datasets 📈
 - [**Budget**](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?resource=download&select=movies_metadata.csv) - a dataset containing budget of movies. Budget is essential to reduce the risk of confounding variables when analyzing the relationship between our variables of interest and the `box office revenue.` We will merge this dataset with [**movie.metadata.csv**](https://drive.google.com/file/d/18ZLIKZsH41qls54Gy1qSYW1xtovf9Ke9/view?usp=share_link) by combining `movie name,` `release year` and `runtime` to create a unique key for each movie.  
