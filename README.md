@@ -37,7 +37,7 @@ We used network analysis to deepen our understanding and visualize the patterns 
 
 
 
-We describe our choice of methods using our research questions as a baseline. Further details on the steps we describe can be found in [**project_milestone_2.ipynb**](https://github.com/epfl-ada/ada-2022-project-teambadass) with the same structure as the following:
+We describe our choice of methods using our research questions as a baseline. Further details on the steps we describe can be found in [**project_milestone_3.ipynb**](https://github.com/epfl-ada/ada-2022-project-teambadass) with the same structure as the following:
 
 ### Step 1: General Pre-Processing
 - [**Movie Metadata**](https://drive.google.com/file/d/18ZLIKZsH41qls54Gy1qSYW1xtovf9Ke9/view?usp=share_link)
