@@ -3,7 +3,7 @@
 The global film industry is a [`$`100 billion worth industry](https://en.wikipedia.org/wiki/Film_industry). There is a vast potential to earn money, and the producers are willing to sacrifice considerable costs to become a movie success. `Pirates of the Caribbean: On Stranger Tides,` the most expensive film, cost [`$`379 million](https://en.wikipedia.org/wiki/List_of_most_expensive_films). With such an amount at your disposal, you may wonder how you should spend the money. Should you use them to get one of the biggest movie stars in your cast? For many, this may be tempting. One of the most famous actors, `Tom Cruise,` was rewarded [`$`100,000,000](https://en.wikipedia.org/wiki/List_of_highest-paid_film_actors) for his performance in `Top Gun: Maverick.` But was it worth it? Or could the money be better spent? The [CMU Movie Summary Corpus](http://www.cs.cmu.edu/~ark/personas/) contains data on the revenue of  8 401 movies. We will analyze this data to create a recipe for a successful movie.
 
 ## Research Questions 🔎
-In our initial analysis, we define the success of a movie in terms of box office revenue. To create a recipe for the production of a successful film, we have limited ourselves to five main research questions:
+In our analysis, we define the success of a movie in terms of box office revenue. To create a recipe for the production of a successful film, we have limited ourselves to five main research questions:
 
 1. Does the movie `release date` have a significant impact on the success of a film, and if so, what is the optimal `release date` concerning the time of the year? Subsequently, the question arises whether this result differs for different `genres.`
 2. How do the `gender` ratio and the fraction of `ethnicities` in the cast affect the success of a movie?
@@ -29,6 +29,12 @@ We use t-tests to determine if there is a significant difference between the gro
 ### Linear Regression
 We performed linear regression with ordinary least squares (OLS) to see the correlation between various attributes and `revenue.` In our initial analysis, we were particularly interested in R-squared to see how our models explain the revenue made.
 
+### Paired Matching
+We used paired matching to check for causlity in observed correlations. To match the two groups we standardized the continuous variables, calculated propensity scores and match based on genre and propensity score with a threshold of >0.95.
+
+### Network Analysis
+We used network analysis to deepen our understanding and visualize the patterns that exist with respect to actors and the movies they starred in. To gain more insight we use the Louvain method to get best partition of communities in our network, analyse the effect of casting actors belonging to the same community vs. when they are from different communities and use degree centrality to measure the importance of a node in our network.
+
 
 
 We describe our choice of methods using our research questions as a baseline. Further details on the steps we describe can be found in [**project_milestone_2.ipynb**](https://github.com/epfl-ada/ada-2022-project-teambadass) with the same structure as the following:
@@ -42,14 +48,14 @@ We describe our choice of methods using our research questions as a baseline. Fu
   - We merged [**character.metadata.tsv**](https://drive.google.com/file/d/1b3_Jn3bBJl6prrtPagU-Yol-ijFMod2u/view?usp=share_link) with [**movie.metadata.tsv**](https://drive.google.com/file/d/18ZLIKZsH41qls54Gy1qSYW1xtovf9Ke9/view?usp=share_link) on `wikipedia_movie_ID` to be able to explore how actors affect movie revenue.
 
 ### Step 2: Release Date
-We performed ANOVA testing to determine if there are differences in revenue mean for the movies released in different months. We then conducted 12 t-tests, with one month as one group and the rest as the other group. 
+We performed ANOVA testing to determine if there are differences in revenue mean for the movies released in different months. We then conducted 12 t-tests, with one month as one group and the rest as the other group. We repeated this analysis for the 10 most common genres.
 
 ### Step 3: Diversity
-We used $ethnicity\ score = \frac{number\ of\ ethnicities}{number\ of\ actors}$ and $female\ score = \frac{number\ of\ females}{number\ of\ actors}$ to measure the effect of diversity on revenue made. We used a threshold with $ethnicity\ score = 0.5$ and $female\ score = 0.5$ to create splits of the dataframe and then performed t-tests on the pairwise groups. 
+We used $ethnicity\ score = \frac{number\ of\ ethnicities}{number\ of\ actors}$ and $female\ score = \frac{number\ of\ females}{number\ of\ actors}$ to measure the effect of diversity on revenue made. We used a threshold with $ethnicity\ score = 0.5$ and $female\ score = 0.5$ to create splits of the dataframe and then performed t-tests on the pairwise groups. For more insight we extended our analysis by a range of thresholds and calculated the confidence intervals. Additionally, we performed paired matching to check if we can conclude causality in the previously analysed relationships.
 
 ### Step 4: Cast
 We used One-Hot Encoding of the actors by creating a dummy variable for each actor. We created a new variable for each actor, so we had to experiment with different thresholds to avoid excessively large DataFrames. The threshold corresponds to how many movies the actor has played.
-The DataFrame was then used in a linear regression model using the actors as categorical predictors. 
+The DataFrame was then used in a linear regression model using the actors as categorical predictors. For more insights in potential patterns we used a network analysis.
 
 ### Step 5: Runtime
 We used runtime and box office revenue to split the DataFrames into pairwise groups on which we performed t-tests. 
@@ -104,7 +110,7 @@ We will use pair matching of movies to control the effects of confounding variab
 <tbody>
   <tr>
     <td class="tg-0lax">@anni5701</td>
-    <td class="tg-0lax">Create meaningful visualizations<br><br>Continue exploring the dataset<br><br>Integrate IMDb rating</td>
+    <td class="tg-0lax">Create meaningful visualizations<br><br>Continue exploring the dataset<br><br>Working on the web interface</td>
   </tr>
   <tr>
     <td class="tg-0lax">@kevinxyc1</td>
