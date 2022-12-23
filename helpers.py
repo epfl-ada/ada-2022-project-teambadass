@@ -7,7 +7,6 @@ from scipy import stats
 from datetime import datetime as dt
 
 
-
 # data analysis
 def bootstrap_CI(data, num_draws=10000, metric=np.nanmean):
     """
@@ -223,6 +222,7 @@ def bootstrap_ttest_CI(data1, data2, num_draws=10000):
         pvals[n] = stats.ttest_ind(data1_tmp, data2_tmp)[1]
 
     return [np.nanpercentile(pvals, 2.5), np.nanpercentile(pvals, 97.5)]
+
 
 def score_to_categories(score):
     """
