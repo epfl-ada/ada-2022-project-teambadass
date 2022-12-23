@@ -1,9 +1,38 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
+import pandas as pd
 
+from scipy import stats
 
-def bootstrap_CI(data1, data2, num_draws=10000):
+def bootstrap_CI(data, num_draws=10000, metric=np.nanmean):
+    """
+    Computes 95% confidence interval
+
+    Parameters
+    ----------
+    data: array_like
+        The data you desire to calculate confidence interval for
+
+    num_draws: int
+        Number of draws to be used for the computation of the CI. The default value is set to 10000
+
+    Returns
+    -------
+    ndarray
+        An array containing the 2.5 percentile at index 0 and the 97.5 percentile at index 1
+    """
+    means = np.zeros(num_draws)
+    data = np.array(data)
+    N = len(data)
+
+    for n in range(num_draws):
+        data_tmp = np.random.choice(data, N)
+        means[n] = metric(data_tmp)
+
+    return [np.nanpercentile(means, 2.5), np.nanpercentile(means, 97.5)]
+
+def bootstrap_mean_diff_CI(data1, data2, num_draws=10000):
     """
     Computes 95% confidence interval for the mean difference between data1 and data2
 
@@ -36,8 +65,40 @@ def bootstrap_CI(data1, data2, num_draws=10000):
 
     return [np.nanpercentile(means, 2.5), np.nanpercentile(means, 97.5)]
 
+def bootstrap_ttest_CI(data1, data2, num_draws=10000):
+    """
+    Computes 95% confidence interval for the ttest between data1 and data2
 
-import pandas as pd
+    Parameters
+    ----------
+    data1: array_like
+        The data you desire to calculate confidence interval for
+
+    data2: array_like
+        The data you desire to calculate confidence interval for
+
+    num_draws: int
+        Number of draws to be used for the computation of the CI. The default value is set to 10000
+
+    Returns
+    -------
+    ndarray
+        An array containing the 2.5 percentile at index 0 and the 97.5 percentile at index 1
+    """
+    pvals = np.zeros(num_draws)
+    data1 = np.array(data1)
+    data2 = np.array(data2)
+    N1 = len(data1)
+    N2 = len(data2)
+
+    for n in range(num_draws):
+        data1_tmp = np.random.choice(data1, N1)
+        data2_tmp = np.random.choice(data2, N2)
+        pvals[n] = stats.ttest_ind(data1_tmp, data2_tmp)[1]
+
+    return [np.nanpercentile(pvals, 2.5), np.nanpercentile(pvals, 97.5)]
+
+
 
 
 def correct_for_inflation(movies, column, start_year, end_year):
@@ -89,3 +150,43 @@ def correct_for_inflation(movies, column, start_year, end_year):
         ] /= inflation.iloc[0][years[i]]
 
     return movies_copy
+
+def score_to_categories(score):
+    """
+    Divides a continous value into 5 categories.
+
+    Args:
+        score: float
+            The score to be divided into categories.
+
+    Returns:
+        str
+            The category the score belongs to.
+    """
+    if score <= 0.2:
+        return '(0-0.2]'
+    elif score <= 0.4:
+        return '(0.2-0.4]'
+    elif score <= 0.6:
+        return '(0.4-0.6]'
+    elif score <= 0.8:
+        return '(0.6-0.8]'
+    else:
+        return '(0.8-1]'
+    
+
+# helper ro get the number of elements in a dictionary
+def get_num_elements(str_dict):
+    return len(str_dict.split(','))
+
+# helper to compare to propensity scores
+def get_similarity(propensity_score1, propensity_score2):
+    '''Calculate similarity for instances with given propensity scores'''
+    return 1-np.abs(propensity_score1-propensity_score2)
+
+# helper to check if two dictionaries share a value
+def shared_value(dict1, dict2):
+    list1 = list(dict1.values())
+    for genre in dict2.values():
+        if genre in list1:
+            return True
